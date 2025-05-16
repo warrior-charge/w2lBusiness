@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partial Business W2L New</title>
+	 <style>
+        body {
+            font-family: Roboto;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        form {
+            background-color: #43F4FE;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 650px;
+            margin: auto; 
+	    padding-bottom: 50px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+	    box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+	    float: right;
+        }
+        input[type="submit"]:hover {
+            background-color: #000000;
+        }
+	input[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ function timestamp() { 
+    var response = document.getElementById("g-recaptcha-response");
+    var submitButton = document.getElementById("submit-button");
+    if (response && response.value.trim() !== "") {
+        // CAPTCHA is completed
+        submitButton.disabled = false;
+    } else {
+	var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+	elems["ts"] = JSON.stringify(new Date().getTime());
+	document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
+    } 
+ } 
+setInterval(timestamp, 500); 
+</script>
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
+
+
+<form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DO9000007wKVN" method="POST">
+
+<input type=hidden name='captcha_settings' value='{"keyname":"personalKeys","fallback":"true","orgId":"00DO9000007wKVN","ts":""}'>
+<input type=hidden name="oid" value="00DO9000007wKVN">
+<input type=hidden name="retURL" value="https://www.chargefuze.com/">
+<input type=hidden id="recordType" name="recordType" value="012PP0000002ARVYA2"> 
+<input type=hidden  name="Lead_Category__c" value="Enterprise Sales"> 
+<input type=hidden  name="Lead_Sub_Category__c" value="Business"> 
+<input type=hidden  name="Lead_Source_Type__c" value="Inbound">  
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+<!--  these lines if you wish to test in debug mode.                          -->
+<!--  <input type="hidden" name="debug" value=1>                              -->
+<!--  <input type="hidden" name="debugEmail"                                  -->
+<!--  value="guerrerocesarw22@gmail.com">                                     -->
+<!--  ----------------------------------------------------------------------  -->
+
+<label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+
+<label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+
+<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+
+<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+
+<label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+
+<label for="url">Website</label><input  id="url" maxlength="80" name="url" size="20" type="text" /><br>
+
+Message:<textarea  id="00NPP000002NJX3" name="00NPP000002NJX3" rows="4" type="text" wrap="soft"></textarea><br>
+ 
+<select id="lead_source" name="lead_source" style="display: none;" >
+<option value="Website" selected>Website</option>
+</select><br>
+	
+<div class="g-recaptcha" data-sitekey="6LfXkPAqAAAAANq320dZoQxGW-tLW7hVAMiI55Aw"></div><br>
+<input type="submit" name="submit"  id="submit-button" disabled>  
+
+</form>
+</body>
+</html>
